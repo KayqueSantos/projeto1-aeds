@@ -17,8 +17,13 @@ Copyright(c) 2018 Kayque Lucas Santana dos Santos
 import numpy as np
 
 class NGrama:
+    '''
+    A classe NGrama é uma estrutura que armazena uma sequência de n palavras.
+    '''
     def __init__(self, palavras):
-        '''Objeto NGrama. Input: qualquer conjunto de palavras em forma de lista ou tupla.'''
+        '''
+        Objeto NGrama. Input: qualquer conjunto de palavras em forma de lista ou tupla.
+        '''
         self.__palavras=np.asarray(palavras)
         
     def __str__(self):
@@ -28,7 +33,9 @@ class NGrama:
         return "nGrama"+str(tuple(self.__palavras))
     
     def __eq__(self, other):
-        '''Compara o objeto do tipo NGrama com outro Ngrama, e retorna True se todas as palavras da sequência de cada objeto são iguais.'''
+        '''
+        Compara o objeto do tipo NGrama com outro Ngrama, e retorna True se todas as palavras da sequência de cada objeto são iguais.
+        '''
         return (self.__palavras==other.__palavras).all()==True
     
     def __getitem__(self, index):

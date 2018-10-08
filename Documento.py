@@ -15,13 +15,27 @@ Copyright(c) 2018 Kayque Lucas Santana dos Santos
 """
 
 from NGrama import NGrama
-from ListaEncadeada import ListaEnc
+from ListaEncadeada import ListaEnc as Lista
 import numpy as np
 
 class Documento:
+    '''
+    A classe documento armazena uma lista de palavras a partir de um arquivo.
+    '''
+    
     def __init__(self, arquivo):
+        '''
+        Objeto Documento. Input: endereço de um arquivo de texto.        
+        '''
+        self.__endereco=arquivo
         self.__vetorPalavras=self.__gerarVetorPalavras(arquivo)
         self.__listaNGramas=self.__gerarNgramas()
+    
+    def __str__(self):
+        return 'Documento: %s \n %s' % (self.__endereco, str(self.__vetorPalavras))
+    
+    def __repr__(self):
+        return 'Documento("'"%s"'")'%(self.__endereco)
         
     def contencao(self, other):
         contador=0
@@ -30,10 +44,9 @@ class Documento:
                 if (nGself==nGother):
                     contador+=1
         return (contador/len(self.__listaNGramas))
-            
         
     def __gerarVetorPalavras(self, arquivo):
-        arq=open(arquivo, 'r')
+        arq=open(arquivo, 'r', encoding="utf8")
         conteudo=arq.read()
         arq.close()
         lista=[]
@@ -49,8 +62,8 @@ class Documento:
             lista.append(palavra)
         return np.asarray(lista)
     
-    def __gerarNgramas(self,n=3): #ver depois uma forma de implementar com o n dinâmico
-        lista=ListaEnc()
+    def __gerarNgramas(self,n=3):
+        lista=Lista()
         for i in range(0,len(self.__vetorPalavras)-n):
             lista.inserir(NGrama(self.__vetorPalavras[i:i+n]))
         return lista
@@ -58,4 +71,3 @@ class Documento:
     def getVetorPalavras(self):
         return self.__vetorPalavras
     
-          
