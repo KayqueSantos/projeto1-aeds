@@ -43,13 +43,16 @@ class ListaEnc:
         return aux.item
     
     def __str__(self):
-        string="["
-        aux=self.__primeiro.prox
-        while(aux.prox!=None):
-            string+=str(aux.item)+','
-            aux=aux.prox
-        string+=str(aux.item)+"]"
-        return string
+        if(self.vazia()):
+            return '[]'
+        else:
+            string="["            
+            aux=self.__primeiro.prox
+            while(aux.prox!=None):
+                string+=str(aux.item)+','
+                aux=aux.prox
+            string+=str(aux.item)+"]"
+            return string
     
     def __repr__(self):
         string="("
