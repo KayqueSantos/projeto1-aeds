@@ -13,8 +13,6 @@ Descrição:  Algoritmo para implementação do objeto lista encadeada.
 
 Copyright(c) 2018 Kayque Lucas Santana dos Santos
 '''
-
-from NGrama import NGrama
  
 class No:
     def __init__(self, item=None, prox=None):
@@ -55,13 +53,15 @@ class ListaEnc:
             return string
     
     def __repr__(self):
+        if(self.vazia()):
+            return 'ListaEnc()'
         string="("
         aux=self.__primeiro.prox
         while(aux.prox!=None):
             string+=str(aux.item)+','
             aux=aux.prox
         string+=str(aux.item)+")"
-        return 'ListaEncadeada'+string
+        return 'ListaEnc'+string
     
     def __len__(self):
         cont=0
