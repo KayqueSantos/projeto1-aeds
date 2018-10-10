@@ -32,18 +32,10 @@ class Documento:
         self.__listaNGramas=self.__gerarNgramas()
     
     def __str__(self):
-        return 'Documento: %s \n %s' % (self.__endereco, str(self.__vetorPalavras))
+        return 'Documento: %s' % (self.__endereco)
     
     def __repr__(self):
         return 'Documento("'"%s"'")'%(self.__endereco)
-        
-    def contencao(self, other):
-        contador=0
-        for nGself in self.__listaNGramas:
-            for nGother in other.__listaNGramas:
-                if (nGself==nGother):
-                    contador+=1
-        return (contador/len(self.__listaNGramas))
         
     def __gerarVetorPalavras(self, arquivo):
         arq=open(arquivo, 'r', encoding="utf8")
@@ -71,3 +63,13 @@ class Documento:
     def getVetorPalavras(self):
         return self.__vetorPalavras
     
+    def contencao(self, other):
+        '''
+        A função contenção retorna uma razão de quantos NGramas do documento são iguais aos NGramas do outro documento, em relação a quantidade de NGramas do documento. O cálculo é feito com base no trabalho de Barrón-Cedeño e Rosso.
+        '''
+        contador=0
+        for nGself in self.__listaNGramas:
+            for nGother in other.__listaNGramas:
+                if (nGself==nGother):
+                    contador+=1
+        return (contador/len(self.__listaNGramas))

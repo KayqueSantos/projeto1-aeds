@@ -31,5 +31,13 @@ class Corpus:
         for arquivo in dirs:
             self.__documentos.inserir(Documento(diretorio+'\\'+arquivo))
     
-    def 
+    def verificarPlagio(self, documentoSuspeito, limiar):
+        '''
+        Recebe um documento e um limiar de contenção como parâmetros e retorna uma lista ordenada dos documentos mais prováveis de terem servido de base para o plágio.
+        '''
+        listaPlagio=Lista()
+        for documento in self.__documentos:
+            if (documento.contencao(documentoSuspeito))>limiar:
+                listaPlagio.inserir(documento)
+        return listaPlagio
         
