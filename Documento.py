@@ -32,7 +32,7 @@ class Documento:
         self.__listaNGramas=self.__gerarNgramas()
     
     def __str__(self):
-        return 'Documento: %s' % (self.__endereco)
+        return (self.__endereco)
     
     def __repr__(self):
         return 'Documento("'"%s"'")'%(self.__endereco)
@@ -69,7 +69,6 @@ class Documento:
         '''
         contador=0
         for nGself in self.__listaNGramas:
-            for nGother in other.__listaNGramas:
-                if (nGself==nGother):
-                    contador+=1
+            if (nGself in other.__listaNGramas):
+                contador+=1
         return (contador/len(self.__listaNGramas))

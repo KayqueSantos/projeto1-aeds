@@ -13,9 +13,10 @@ Descrição:  Algoritmo para implementação do objeto Corpus.
 
 Copyright(c) 2018 Kayque Lucas Santana dos Santos
 '''
-import os
 from ListaEncadeada import ListaEnc as Lista
 from Documento import Documento
+import os
+
 
 class Corpus:
     '''
