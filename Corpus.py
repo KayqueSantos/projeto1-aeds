@@ -40,5 +40,5 @@ class Corpus:
         for documento in self.__documentos:
             if (documento.contencao(documentoSuspeito))>limiar:
                 listaPlagio.inserir(documento)
-        return listaPlagio
+        return 'Possíveis Documentos Plagiados:' +str(listaPlagio)
         
