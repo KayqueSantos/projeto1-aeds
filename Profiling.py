@@ -9,7 +9,7 @@ Autor: Kayque Lucas Santana dos Santos
 Email: klss@cin.ufpe.br
 Data: 2018-10-20
 
-Descrição:  Algoritmo para verificação de plágio entre dois arquivos.
+Descrição:  Algoritmo para profiling de verificação de plágio entre dois arquivos.
 
 Copyright(c) 2018 Kayque Lucas Santana dos Santos
 """
@@ -19,6 +19,7 @@ from memory_profiler import profile
 import cProfile, pstats, io
 
 def profilefunc(func):
+    '''Decorador do profiling de tempo. Escreve o resultado no arquivo 'test.txt'.'''
     def _wrapper(*args, **kwargs):
         prof = cProfile.Profile()
         prof.enable()
