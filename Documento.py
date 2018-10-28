@@ -57,18 +57,11 @@ class Documento:
     def __gerarNgramas(self,n=3):
         lista=Lista()
         for i in range(0,len(self.__vetorPalavras)-n):
-            lista.inserir(NGrama(self.__vetorPalavras[i:i+n]))
+            lista.inserir(NGrama(self.__repr__(), self.__vetorPalavras[i], self.__vetorPalavras[i+n-1]))
         return lista
     
     def getVetorPalavras(self):
         return self.__vetorPalavras
     
-    def contencao(self, other):
-        '''
-        A função contenção retorna uma razão de quantos NGramas do documento são iguais aos NGramas do outro documento, em relação a quantidade de NGramas do documento. O cálculo é feito com base no trabalho de Barrón-Cedeño e Rosso.
-        '''
-        contador=0
-        for nGself in self.__listaNGramas:
-            if (nGself in other.__listaNGramas):
-                contador+=1
-        return (contador/len(self.__listaNGramas))
+    def getNGramas(self):
+        return self.__listaNGramas

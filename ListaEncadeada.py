@@ -151,6 +151,15 @@ class ListaEnc:
         del tmp
         del aux
         return item
+    
+    def __contains__(self, item):
+        aux=self.__primeiro.prox
+        while (aux!=None and aux.item!=item):
+            aux=aux.prox
+        if(aux is None):
+            return False
+        else:
+            return True
         
     def vazia(self):
         '''Retorna valor verdade sobre a lista estar vazia.'''

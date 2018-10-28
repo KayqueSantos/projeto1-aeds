@@ -19,7 +19,9 @@ from memory_profiler import profile
 import cProfile, pstats, io
 
 def profilefunc(func):
-    '''Decorador do profiling de tempo. Escreve o resultado no arquivo 'test.txt'.'''
+    '''
+    Decorador do profiling de tempo. Escreve o resultado no arquivo timeprofiling.txt.
+    '''
     def _wrapper(*args, **kwargs):
         prof = cProfile.Profile()
         prof.enable()
@@ -27,12 +29,12 @@ def profilefunc(func):
         prof.disable()
         
         s = io.StringIO()
-        ps = pstats.Stats(prof, stream=s).sort_stats('tottime')
+        ps = pstats.Stats(prof, stream=s).sort_stats('cumulative')
         ps.print_stats()
 
-        with open('test.txt', 'w+') as f:
+        with open('timeprofiling.txt', 'w+') as f:
             f.write(s.getvalue())
-                    
+            
         return retval
     return _wrapper
 

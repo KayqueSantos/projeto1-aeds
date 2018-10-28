@@ -20,17 +20,18 @@ class NGrama:
     '''
     A classe NGrama é uma estrutura que armazena uma sequência de n palavras.
     '''
-    def __init__(self, palavras):
+    def __init__(self, doc, inicio, fim):
         '''
         Objeto NGrama. Input: qualquer conjunto de palavras em forma de lista ou tupla.
         '''
-        self.__palavras=np.asarray(palavras)
+        self.__doc=doc
+        self.__palavras=np.array([inicio, fim])
         
     def __str__(self):
         return str(self.__palavras)
     
     def __repr__(self):
-        return "nGrama"+str(tuple(self.__palavras))
+        return "nGrama (%s)"%(self.__palavras)
     
     def __eq__(self, other):
         '''
@@ -55,3 +56,9 @@ class NGrama:
         palavra = self.__palavras[self.__index]
         self.__index+=1
         return palavra
+    
+    def getPalavras(self):
+        return (self.__palavras)
+    
+    def getDoc(self):
+        return (self.__doc)
