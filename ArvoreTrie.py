@@ -57,11 +57,9 @@ class ArvoreTrie:
         no=self.__raiz
         for palavra in chave:
             encontrado=False
-            for filho in no.filhos:
-                if(palavra==filho):
-                    no=no.filhos[palavra]
-                    encontrado=True
-                    break
+            if(palavra in no.filhos):
+                no=no.filhos[palavra]
+                encontrado=True
         if(not encontrado):
             return None
         return no.valor

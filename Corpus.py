@@ -53,7 +53,7 @@ class Corpus:
         listaPlagio=Lista()
         contencaoDocumentos=self.__buscarNGramas(documentoSuspeito.getNGramas())
         for doc in contencaoDocumentos:
-            if(contencaoDocumentos[doc]/len(documentoSuspeito.getNGramas()))>limiar:
+            if(contencaoDocumentos[doc]/len(doc.getNGramas()))>limiar:
                 listaPlagio.inserir(doc)
         return listaPlagio
     
@@ -63,7 +63,7 @@ class Corpus:
         '''
         documentos={}
         for NGrama in listaNGramas:
-            busca=self.__TrieNGramas.busca(NGrama)
+            busca=self.__TrieNGramas.busca(NGrama.getPalavras())
             if(busca):
                 for doc in busca:
                     if(not doc in documentos):
