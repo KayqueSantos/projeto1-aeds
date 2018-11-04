@@ -49,3 +49,7 @@ def verificarPlagioMemUsageProfile(diretorioCorpus, diretorioDocumento, limiar):
     c=Corpus(diretorioCorpus)
     doc=Documento(diretorioDocumento)
     return c.verificarPlagio(doc, limiar)
+
+print(verificarPlagioMemUsageProfile('C:\\Users\\Família Santana\\eclipse-workspace\\Projeto_1_Algoritmos\\dados\\src',
+                                 'C:\\Users\\Família Santana\\eclipse-workspace\\Projeto_1_Algoritmos\\dados\\susp\\suspicious-document00005.txt',
+                                 0.5))

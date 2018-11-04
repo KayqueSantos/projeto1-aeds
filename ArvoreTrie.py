@@ -29,36 +29,36 @@ class ArvoreTrie:
     
     def add(self, chave, valor):
         '''
-        Adicionando elementos à árvore trie.
+        Adicionando letras à árvore trie.
         '''
         no=self.__raiz
-        for palavra in chave:
+        for letra in chave:
             encontrado=False
-            #procurar pela palavra entre os filhos do no atual
+            #procurar pela letra entre os filhos do no atual
             if(no.filhos==None):
-                novoNo=TrieNo(palavra, Lista(), {})
-                no.filhos[palavra]=novoNo
+                novoNo=TrieNo(letra, Lista(), {})
+                no.filhos[letra]=novoNo
                 no=novoNo
                 encontrado=True
-            if(palavra in no.filhos):
-                #se a palavra é encontrada, apontamos o no para o filho que contem a palavra
-                no=no.filhos[palavra]
+            if(letra in no.filhos):
+                #se a letra é encontrada, apontamos o no para o filho que contem a letra
+                no=no.filhos[letra]
                 encontrado=True
             if(not encontrado):
-                #se a palavra não é encontrada em nenhum dos filhos do nó atual, criamos um novo nó com a palavra e apontamos para ele
-                novoNo=TrieNo(palavra, Lista(), {})
-                no.filhos[palavra]=novoNo
+                #se a letra não é encontrada em nenhum dos filhos do nó atual, criamos um novo nó com a letra e apontamos para ele
+                novoNo=TrieNo(letra, Lista(), {})
+                no.filhos[letra]=novoNo
                 no=novoNo
-        #ao finalizar a busca, chegamos ao nó correspondente ao ultimo elemento da chave, e nele guardamos o valor
+        #ao finalizar a busca, chegamos ao nó correspondente à última letra da chave, e nele guardamos o valor
         if((not valor in no.valor)):
             no.valor.inserir(valor)
     
     def busca(self, chave):
         no=self.__raiz
-        for palavra in chave:
+        for letra in chave:
             encontrado=False
-            if(palavra in no.filhos):
-                no=no.filhos[palavra]
+            if(letra in no.filhos):
+                no=no.filhos[letra]
                 encontrado=True
         if(not encontrado):
             return None

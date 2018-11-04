@@ -42,7 +42,7 @@ class Corpus:
         trie=ArvoreTrie()
         for doc in self.__documentos:
             for ngrama in doc.getNGramas():
-                trie.add(ngrama, doc)
+                trie.add(ngrama.getPalavras(), doc)
         return trie
     
     def verificarPlagio(self, documentoSuspeito, limiar):
@@ -52,7 +52,7 @@ class Corpus:
         '''
         listaPlagio=Lista()
         contencaoDocumentos=self.__buscarNGramas(documentoSuspeito.getNGramas())
-        for doc in contencaoDocumentos:
+        for doc, contencao in sorted(contencaoDocumentos.items(), key=lambda x:x[1]):
             if(contencaoDocumentos[doc]/len(doc.getNGramas()))>limiar:
                 listaPlagio.inserir(doc)
         return listaPlagio

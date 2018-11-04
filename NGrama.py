@@ -58,7 +58,10 @@ class NGrama:
         return palavra
     
     def getPalavras(self):
-        return (self.__palavras)
+        '''
+        Retorna uma string da concatenação das palavras do NGrama.
+        '''
+        return (self.__palavras[0]+self.__palavras[1])
     
     def getDoc(self):
         return (self.__doc)
