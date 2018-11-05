@@ -29,7 +29,7 @@ class ArvoreTrie:
     
     def add(self, chave, valor):
         '''
-        Adicionando letras à árvore trie.
+        Adiciona elementos à árvore trie, sendo a chave um objeto iterável, e o valor um objeto qualquer.
         '''
         no=self.__raiz
         for letra in chave:
@@ -54,6 +54,9 @@ class ArvoreTrie:
             no.valor.inserir(valor)
     
     def busca(self, chave):
+        '''
+        Busca e retorna o valor guardado na chave passada como parâmetro.
+        '''
         no=self.__raiz
         for letra in chave:
             encontrado=False

@@ -47,12 +47,11 @@ class Corpus:
     
     def verificarPlagio(self, documentoSuspeito, limiar):
         '''
-        Recebe um documento e um limiar de contenção como parâmetros e retorna uma lista ordenada dos documentos mais prováveis de
-        terem servido de base para o plágio.
+        Recebe um documento e um limiar de contenção como parâmetros e retorna uma lista ordenada dos documentos mais prováveis de terem servido de base para o plágio.
         '''
         listaPlagio=Lista()
         contencaoDocumentos=self.__buscarNGramas(documentoSuspeito.getNGramas())
-        for doc, contencao in sorted(contencaoDocumentos.items(), key=lambda x:x[1]):
+        for doc, contencao in sorted(contencaoDocumentos.items(), key=lambda x:x[1], reverse=True): #ordena o dicionario de documentos com NGramas em comum, do maior número para o menor, e itera esse dicionário calculando a contenção de cada documento
             if(contencaoDocumentos[doc]/len(doc.getNGramas()))>limiar:
                 listaPlagio.inserir(doc)
         return listaPlagio

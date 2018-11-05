@@ -40,16 +40,20 @@ def profilefunc(func):
 
 @profilefunc
 def verificarPlagioTimeProfile(diretorioCorpus, diretorioDocumento, limiar):
+    '''
+    Input: endereço para pasta contendo arquivos, endereço para um arquivo, limiar de contenção para verificação.
+    Conta o tempo de instanciação de um objeto corpus, um objeto documento, e da verificação de plágio do documento em relação ao corpus.
+    '''
     c=Corpus(diretorioCorpus)
     doc=Documento(diretorioDocumento)
     return c.verificarPlagio(doc, limiar)
 
 @profile
 def verificarPlagioMemUsageProfile(diretorioCorpus, diretorioDocumento, limiar):
+    '''
+    Input: endereço para pasta contendo arquivos, endereço para um arquivo, limiar de contenção para verificação.
+    Calcula a memória usada pela instanciação de um objeto corpus, um objeto documento, e da verificação de plágio do documento em relação ao corpus.
+    '''
     c=Corpus(diretorioCorpus)
     doc=Documento(diretorioDocumento)
     return c.verificarPlagio(doc, limiar)
-
-print(verificarPlagioMemUsageProfile('C:\\Users\\Família Santana\\eclipse-workspace\\Projeto_1_Algoritmos\\dados\\src',
-                                 'C:\\Users\\Família Santana\\eclipse-workspace\\Projeto_1_Algoritmos\\dados\\susp\\suspicious-document00005.txt',
-                                 0.5))

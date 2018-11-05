@@ -25,7 +25,7 @@ class Documento:
     
     def __init__(self, arquivo):
         '''
-        Objeto Documento. Input: endereço de um arquivo de texto.        
+        Objeto Documento. Input: endereço de um arquivo de texto.
         '''
         self.__endereco=arquivo
         self.__vetorPalavras=self.__gerarVetorPalavras(arquivo)
@@ -38,6 +38,9 @@ class Documento:
         return 'Documento("'"%s"'")'%(self.__endereco)
         
     def __gerarVetorPalavras(self, arquivo):
+        '''
+        Retorna um vetor contendo todas as palavras do documento.
+        '''
         arq=open(arquivo, 'r', encoding="utf8")
         conteudo=arq.read()
         arq.close()
@@ -55,6 +58,9 @@ class Documento:
         return np.asarray(lista)
     
     def __gerarNgramas(self,n=3):
+        '''
+        Gera uma lista encadeada contendo todos os NGramas do documentos.
+        '''
         lista=Lista()
         for i in range(0,len(self.__vetorPalavras)-n):
             lista.inserir(NGrama(self.__repr__(), self.__vetorPalavras[i], self.__vetorPalavras[i+n-1]))
